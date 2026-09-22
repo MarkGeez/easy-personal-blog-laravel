@@ -25,5 +25,10 @@ Route::prefix('admin')->middleware('auth')->group(function(){
         return view('add');
     });
     Route::post('/add', [AdminController::class, 'add'])->name('add.admin');
+
+    Route::get('/update/{id}', [AdminController::class,'viewUpdate'])->name('update.admin');
+    Route::put('/update/{id}', [AdminController::class,'submitUpdate'])->name('submit.update');
 });
+
+
 

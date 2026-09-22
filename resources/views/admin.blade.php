@@ -8,5 +8,35 @@
 </head>
 <body>
     <div>dsa</div>
+
+    @if (session('success'))
+        {{ session('success') }}
+    @endif
+
+    <a href="{{ route('add.admin') }}">add</a>
+    <div>
+        <table border="1">
+            <tr>
+                <th>title</th>
+            </tr>
+        @foreach ($posts as $post)
+            
+            <tr>
+                <td>  {{ $post->title }}</td>
+                <td> {{ \Carbon\Carbon::parse($post->uploaded_at )->format('F j, Y') }}</td>
+                <td> <a href="{{ route('update.admin', $post->id) }}">UPDATE</a>
+      </td>
+                <td>
+                    <button>delete</button>
+                </td>
+
+            </tr>
+
+    
+           
+        @endforeach
+         </table>
+
+    </div>
 </body>
 </html>

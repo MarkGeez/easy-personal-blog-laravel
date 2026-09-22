@@ -10,7 +10,7 @@ class blog extends Model
 {
     protected $table = 'blog';
 
-    protected $fillable = ['title', 'uploaded_at', 'content'];
+    protected $fillable = ['title', 'uploaded_at', 'content', 'user_id'];
 
     public function user():BelongsTo
     {

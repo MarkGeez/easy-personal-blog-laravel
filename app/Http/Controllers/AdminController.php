@@ -26,8 +26,7 @@ class AdminController extends Controller
     }
     public function display(){
         $posts = blog::all();
-
-        
+   
         return view('admin', compact('posts'));
     }
 
@@ -45,7 +44,25 @@ class AdminController extends Controller
         ]
         ));
 
-        return back()->with('success', 'Post created successfully.');
+        return redirect()->back()->with('success', 'Post created successfully.');
+    }
+
+    public function viewUpdate($id){
+        $data = blog::findOrFail($id);
+
+        return view('update', compact('data'));
+
+    }
+
+    public function submitUpdate(Request $request, $id){
+        $data = $request->validate([
+            'title'=> 'string|required|max:255',
+            'content'=> 'string'
+            ]);
+
+        blog::findOrFail($id)->update($data);
+
+        return redirect()->back()->with('success','data updated accessfuulllyy');
     }
 
     

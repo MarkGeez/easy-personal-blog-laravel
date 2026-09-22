@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
+     @if (session('success'))
+        {{ session('success') }}
+    @endif
     <form action="{{route('add.admin')}}" method="POST">
         @csrf
         @if ($errors->any())
