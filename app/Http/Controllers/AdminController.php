@@ -30,4 +30,20 @@ class AdminController extends Controller
         
         return view('admin', compact('posts'));
     }
+
+    public function add(Request $request){
+
+        $date = now();
+        $data = $request->validate([
+            'title' => "text|required|max:254",
+            'date' => $date,
+            'content' => "text"
+        ]);
+
+        blog::create($data);
+
+        return back()->with(error, "failed to create data");
+    }
+
+        
 }
