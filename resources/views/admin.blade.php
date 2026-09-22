@@ -27,7 +27,14 @@
                 <td> <a href="{{ route('update.admin', $post->id) }}">UPDATE</a>
       </td>
                 <td>
-                    <button>delete</button>
+
+
+                    <form action="{{ route('delete.blog', ["id" => $post->id ]) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">delete</button>
+                    </form>
+                   
                 </td>
 
             </tr>

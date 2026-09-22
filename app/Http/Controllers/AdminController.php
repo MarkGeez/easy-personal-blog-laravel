@@ -65,5 +65,13 @@ class AdminController extends Controller
         return redirect()->back()->with('success','data updated accessfuulllyy');
     }
 
+    public function delete($id){
+     
+    blog::findOrFail($id)->delete();
+    return redirect()->back()->with('success','data deleted succesfulyansdfigusd');
+
+    }
+
+
     
 }
