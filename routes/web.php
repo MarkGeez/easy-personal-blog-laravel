@@ -23,7 +23,7 @@ Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('', [AdminController::class, 'display'])->name('views.admin');
     Route::get('/add', function(){
         return view('add');
-    })
+    });
     Route::post('/add', [AdminController::class, 'add'])->name('add.admin');
 });
 

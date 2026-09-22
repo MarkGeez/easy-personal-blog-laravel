@@ -8,9 +8,16 @@
 <body>
     <form action="{{route('add.admin')}}" method="POST">
         @csrf
-        <input type="text" id="title"> title
-        <input type="date" readonly>
-        <input type="text" id="content"> content
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+        <input type="text" id="title" name="title" value="{{ old('title') }}"> title
+        <textarea id="content" name="content">{{ old('content') }}</textarea> content
+        <button type="submit">Save</button>
     </form>
 </body>
 </html>

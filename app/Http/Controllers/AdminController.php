@@ -33,17 +33,20 @@ class AdminController extends Controller
 
     public function add(Request $request){
 
-        $date = now();
         $data = $request->validate([
-            'title' => "text|required|max:254",
-            'date' => $date,
-            'content' => "text"
+            'title' => "string|required|max:254",
+            'content' => "string",
         ]);
 
-        blog::create($data);
+        blog::create(array_merge($data,
+        [
+            'uploaded_at' => now(),
+            'user_id' => auth()->id()
+        ]
+        ));
 
-        return back()->with(error, "failed to create data");
+        return back()->with('success', 'Post created successfully.');
     }
 
-        
+    
 }
