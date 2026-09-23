@@ -12,4 +12,10 @@ class GuestController extends Controller
         return view('blog', compact('posts'));
     }
 
+    public function showBlog($id){
+        $data = blog::findOrFail($id);
+
+        return view('showBlog', compact('data'));
+    }
+
 }

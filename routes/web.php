@@ -17,6 +17,8 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/blog/{id}', [GuestController::class, 'showBlog'])->name('view.blog');
+
 Route::post('/login', [AdminController::class, 'login']);
 
 Route::prefix('admin')->middleware('auth')->group(function(){
